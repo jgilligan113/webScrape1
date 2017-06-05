@@ -1,0 +1,28 @@
+{
+  "name": "web-scrape",
+  "version": "1.0.0",
+  "description": "Week 18 Homework Assignment - All the News That's Fit to Scrape",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgilligan113/webScrape1.git"
+  },
+  "author": "Jessica Gilligan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jgilligan113/webScrape1/issues"
+  },
+  "homepage": "https://github.com/jgilligan113/webScrape1#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.1",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "mongojs": "^2.4.0",
+    "mongoose": "^4.10.4",
+    "request": "^2.81.0"
+  }
+}
