@@ -1,13 +1,80 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Animals</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
 
-    <script src="app.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Scrape and comment</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Jura|Shojumaru" rel="stylesheet">
+
+  <!-- Latest compiled and minified JavaScript -->
+ <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <div class="container">
+        <h1>REACT kungfu</h1>
+        <p>Use this to reference highlights of links to learn react like a master and add your comments and notes to help me
+          out; Special credit can be found <a href="http://reactkungfu.com/">here</a>.<br><br>
+          <button type="button" class="btn btn-default btn-lg" id="scrape">See Notes</button>&nbsp&nbsp&nbsp <button type="button" class="btn btn-default btn-lg" id="scrape">See Users</button>&nbsp&nbsp&nbsp <button type="button" class="btn btn-default btn-lg" id="scrape">See Articles</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-7">
+        <div class="panel">
+          <div class="panel-heading">
+            <h3 class="panel-title">React Master-in-Training Docs</h3>
+          </div>
+          <div class="panel-body">
+            Panel content - our results will go here.<br>
+            Feel free to click on a title, review the link and use the notes box to the right to keep notes for your personal reference.  Come back and add new notes as you gain more insight and expertise.
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">Topics below:</h3>
+          </div>
+          <ul class="list-group" id="posts">
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="panel">
+          <div class="panel-heading">
+            <h3 class="panel-title">Notes</h3>
+          </div>
+          <div class="panel-body" id="notes" hidden>
+            <form>
+              <div class="form-group">
+                <textarea class="form-control" rows="5" placeholder="add notes on content here"></textarea><br>
+                <input type="text" class="form-control" placeholder="User Name to display"><br>
+                <button type="button" class="btn btn-info" id="addNote">Save</button>
+              </div>
+            </form>
+          </div>
+          <div class="panel-heading" id="comments" hidden>
+            <h3 class="panel-title">Previous comments</h3>
+          </div>
+          <ul class="list-group" id="pNotes">
+          </ul>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script src="app.js"></script>
+
+
 </html>
