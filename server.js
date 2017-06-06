@@ -24,7 +24,7 @@ app.use(express.static("public"));
 //var databaseUrl = "hwScraper";
 //var collections = ["hwScrapedData"];
 
-mongoose.connect("mongodb://localhost/hwScrapedData");
+mongoose.connect("mongodb://heroku_rg9xlq09:brq0mrvpeeo4i0unnc56urs2ef@ds163721.mlab.com:63721/heroku_rg9xlq09");
 var db = mongoose.connection;
 
 //hook mongojs config to db var --> replaced with Mongoose connection
