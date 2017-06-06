@@ -18,12 +18,42 @@ function getPosts() {
 getPosts();
 
 //onclick to show or activate the notes panel and list historical notes below
+var artId;
 $(document).on("click", "li", function() {
     console.log("I was clicked");
   // Empty the notes from the note section
-  $("#notes").removeAttr("hidden");
-  $("#comments").removeAttr("hidden");
   // Save the id from the p tag
-  var thisId = $(this).attr("data-id");
+  var artId = $(this).attr("data-id");
+  $("#addNote").attr("data-id", artId);
+  console.log("This is my id: " + artId);
 });
 //get req.body.note and username and post to database
+// When you click the savenote button
+$("#addNote").on("click", function() {
+  // Grab the id associated with the article from the submit button
+  var thisId = $(this).attr("data-id");
+  alert("this is the Id of the article " + thisId);
+
+  // Run a POST request to change the note, using what's entered in the inputs
+  $.ajax({
+    method: "POST",
+    url: "/submit/" + thisId,
+    data: {
+      // Value taken from title input
+      title: $("#titleinput").val(),
+      // Value taken from note textarea
+      body: $("#bodyinput").val()
+    }
+  })
+    // With that done
+    .done(function(data) {
+      // Log the response
+      console.log(data);
+      // Empty the notes section
+      $("#notes").empty();
+    });
+
+  // Also, remove the values entered in the input and textarea for note entry
+  $("#titleinput").val("");
+  $("#bodyinput").val("");
+});

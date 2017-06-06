@@ -54,16 +54,16 @@
           <div class="panel-heading">
             <h3 class="panel-title">Notes</h3>
           </div>
-          <div class="panel-body" id="notes" hidden>
+          <div class="panel-body">
             <form>
-              <div class="form-group">
-                <textarea class="form-control" rows="5" placeholder="add notes on content here"></textarea><br>
-                <input type="text" class="form-control" placeholder="User Name to display"><br>
+              <div class="form-group" id="notes">
+                <input type="text" name="title" id="title" class="form-control" placeholder="Title"><br>
+                <textarea class="form-control" name="body" id="body" rows="5" placeholder="add notes on content here"></textarea><br>
                 <button type="button" class="btn btn-info" id="addNote">Save</button>
               </div>
             </form>
           </div>
-          <div class="panel-heading" id="comments" hidden>
+          <div class="panel-heading" id="comments">
             <h3 class="panel-title">Previous comments</h3>
           </div>
           <ul class="list-group" id="pNotes">

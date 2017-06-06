@@ -4,8 +4,8 @@ var express = require("express");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
-var User = require("./models/Note.js");
-var Note = require("./models/User.js");
+var User = require("./models/User.js");
+var Note = require("./models/Note.js");
 var HwScrapedData = require("./models/HwScrapedData.js");
 
 mongoose.Promise = Promise;
@@ -91,13 +91,56 @@ app.get("/articles", function(req, res) {
 });
 
 //Retrieve the data from the database
-// app.get("/articleNotes", function(req, res) {
+// app.get("/articleNotes/:id", function(req, res) {
 //     db.hwScrapedData.find({}, function(error, dbResult) {
 //         if (error) {console.log(error)} else {
 //             res.send(dbResult);
 //         }
 //     });
 // });
+
+// Route to see notes we have added
+app.get("/notes", function(req, res) {
+  // Find all notes in the note collection with our Note model
+  Note.find({}, function(error, doc) {
+    // Send any errors to the browser
+    if (error) {
+      res.send(error);
+    }
+    // Or send the doc to the browser
+    else {
+      res.send(doc);
+    }
+  });
+});
+
+// New note creation via POST route
+app.post("/submit/:id", function(req, res) {
+  // Use our Note model to make a new note from the req.body
+  var newNote = new Note(req.body);
+  console.log(newNote);
+  // Save the new note to mongoose
+  newNote.save(function(error, doc) {
+    // Send any errors to the browser
+    if (error) {
+      res.send(error);
+    }
+    // Otherwise
+    else {
+      // Find our user and push the new note id into the User's notes array
+      HwScrapedData.findOneAndUpdate({}, { $push: { "notes": doc._id } }, { new: true }, function(err, newdoc) {
+        // Send any errors to the browser
+        if (err) {
+          res.send(err);
+        }
+        // Or send the newdoc to the browser
+        else {
+          res.send(newdoc);
+        }
+      });
+    }
+  });
+});
 
 //where should we go? what port?
 app.listen(3000, function() {
