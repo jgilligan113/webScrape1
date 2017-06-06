@@ -169,5 +169,7 @@ app.post("/submit/:id", function (req, res) {
         }
     });
 });
-
+app.listen(PORT, function() {
+    console.log("app listening on PORT", PORT);
+});
 
