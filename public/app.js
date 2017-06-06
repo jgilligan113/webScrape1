@@ -26,7 +26,23 @@ $(document).on("click", "li", function() {
   var artId = $(this).attr("data-id");
   $("#addNote").attr("data-id", artId);
   console.log("This is my id: " + artId);
-});
+  $('#pNotes').empty()
+
+  $.ajax({
+    method: "GET",
+    url: "/articles/" + artId
+  })
+    // With that done, add the note information to the page
+    .done(function(data) {
+        for (var i = 0; i < data.notes.length; i++) {
+      console.log(data.notes[i]);
+      if (data.notes[i].title && data.notes[i].body) {
+      $('#pNotes').append("<li class='list-group-item'>Title: <strong>"+data.notes[i].title+"</strong></li>");
+      $('#pNotes').append("<li class='list-group-item'>Comment: "+data.notes[i].body+"</li>");
+                }
+            }
+        });
+    });
 //get req.body.note and username and post to database
 // When you click the savenote button
 $("#addNote").on("click", function() {
@@ -50,7 +66,7 @@ $("#addNote").on("click", function() {
       // Log the response
       console.log(data);
       // Empty the notes section
-      $("#notes").empty();
+      
     });
 
   // Also, remove the values entered in the input and textarea for note entry

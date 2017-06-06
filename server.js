@@ -81,7 +81,9 @@ app.get("/", function(req, res) {
 
 //Retrieve the SCRAPED data from the database
 app.get("/articles", function(req, res) {
-    HwScrapedData.find({}, function(error, dbResult) {
+    HwScrapedData.find({})
+    .populate("notes")
+    .exec(function(error, dbResult) {
         if (error) {
             console.log(error);
         } else {
@@ -114,11 +116,34 @@ app.get("/notes", function(req, res) {
   });
 });
 
+// Grab an article by it's ObjectId and show the notes
+app.get("/articles/:id", function(req, res) {
+  // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+  HwScrapedData.findOne({ "_id": req.params.id })
+  // ..and populate all of the notes associated with it
+  .populate("notes")
+  // now, execute our query
+  .exec(function(error, doc) {
+    // Log any errors
+    if (error) {
+      console.log(error);
+    }
+    // Otherwise, send the doc to the browser as a json object
+    else {
+      res.json(doc);
+      console.log(doc);
+    }
+  });
+});
+
+
+
 // New note creation via POST route
 app.post("/submit/:id", function(req, res) {
   // Use our Note model to make a new note from the req.body
   var newNote = new Note(req.body);
-  console.log(newNote);
+  
+
   // Save the new note to mongoose
   newNote.save(function(error, doc) {
     // Send any errors to the browser
