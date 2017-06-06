@@ -13,11 +13,7 @@ var NoteSchema = new Schema({
   // body: a string
   body: {
     type: String
-   }//,
-  // user: [{
-  //       type: Schema.Types.ObjectId,
-  //       ref: "User"
-  //   }]
+  }
 });
 
 // Make a Note model with the NoteSchema

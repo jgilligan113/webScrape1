@@ -1,16 +1,25 @@
-.jumbotron{
-    background: orange; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(red, orange, yellow); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(red, orange, yellow); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(red, orange, yellow); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(red, orange, yellow); /* Standard syntax (must be last) */
+.jumbotron {
+    background: orange;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(red, orange, yellow);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(red, orange, yellow);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(red, orange, yellow);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(red, orange, yellow);
+    /* Standard syntax (must be last) */
 }
+
 body {
-    font-family: 'Jura', sans-serif;
+    font-family: 'Jura', sans
+    
 }
+
 h1 {
     font-family: 'Shojumaru', cursive;
 }
-.panel-heading{
+
+.panel-heading {
     background-color: yellow;
 }
